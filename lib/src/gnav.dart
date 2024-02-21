@@ -80,6 +80,11 @@ class _GNavState extends State<GNav> {
   }
 
   @override
+  void dispose() {
+    super.dispose();
+  }
+
+  @override
   void didUpdateWidget(GNav oldWidget) {
     super.didUpdateWidget(oldWidget);
     if (widget.selectedIndex != oldWidget.selectedIndex) {
@@ -138,10 +143,8 @@ class _GNavState extends State<GNav> {
 
                         widget.onTabChange?.call(selectedIndex);
 
-                        Future.delayed(widget.duration, () {
-                          setState(() {
-                            clickable = true;
-                          });
+                        setState(() {
+                          clickable = true;
                         });
                       },
                     ))
